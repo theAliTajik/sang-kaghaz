@@ -45,7 +45,7 @@ def main():
 if __name__ == "__main__":
     main()
     '''
-
+'''
 # ۱ - Import library
 import pygame
 from pygame.locals import *
@@ -100,3 +100,36 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
+import random
+
+game_list = ["rock", "paper", "scissor"]
+
+
+player1 = input("Enter your decision: ")
+
+
+player2 = random.choice(game_list)
+print(f"camputer choice: {player2}")
+
+if player1 == player2:
+    print ("equal")
+elif player1 == "rock":
+    if player2 == "scissor":
+        print ("player1 wins")
+    else :
+        print ("computer wins")
+elif player1 == "paper":
+    if player2 == "rock":
+        print("player1 wins")
+    else:
+        print("computer wins")
+elif player1 == "scissor":
+    if player2 == "paper":
+        print("player1 wins")
+    else:
+        print("computer wins")
+else:
+    print("invalid input!")
+
+
