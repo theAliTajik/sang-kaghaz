@@ -45,38 +45,37 @@ def draw_button(screen, rect, text):
     screen.blit(text_surface, text_rect)
     
     
-def main():
-    button_rect = pygame.Rect(220, 200, 200, 50)
-    running = True  
+
+button_rect = pygame.Rect(220, 200, 200, 50)
+running = True  
 
 # ۴ - keep looping through
-    while running:
-    # ۵ - clear the screen before drawing it again
-        screen.fill(WHITE)
-        screen.blit(img1 , rect1)
-        screen.blit(img2 , rect2)
-        screen.blit(img3 , rect3)
+while running:
+# ۵ - clear the screen before drawing it again
+    screen.fill(WHITE)
+    screen.blit(img1 , rect1)
+    screen.blit(img2 , rect2)
+    screen.blit(img3 , rect3)
 
-    # ۶ - draw the screen elements
-    #screen.blit(player, (100,100))
-        draw_button(screen, button_rect, "Play")
-    # ۷ - update the screen
-        pygame.display.flip()
-    # ۸ - loop through the events
-        for event in pygame.event.get():
-        # check if the event is the X button 
-            if event.type==pygame.QUIT:
-                running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN:  
-                if button_rect.collidepoint(event.pos):
-                    print("The button was pressed")
-    
-  
-            # if it is quit the game
-    pygame.quit() 
-    sys.exit(0)
-if __name__ == "__main__":
-    main()
+# ۶ - draw the screen elements
+#screen.blit(player, (100,100))
+    draw_button(screen, button_rect, "Play")
+# ۷ - update the screen
+    pygame.display.flip()
+# ۸ - loop through the events
+    for event in pygame.event.get():
+    # check if the event is the X button 
+        if event.type==pygame.QUIT:
+            running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:  
+            if button_rect.collidepoint(event.pos):
+                print("The button was pressed")
+
+
+        # if it is quit the game
+pygame.quit() 
+sys.exit(0)
+
 
 #قوانین بازی
 import random
