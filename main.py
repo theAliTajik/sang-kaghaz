@@ -18,6 +18,26 @@ BLUE = (0, 0, 255)
 # تعریف فونت
 font = pygame.font.Font(None, 36)
 
+try:
+    img1 = pygame.transform.scale(pygame.image.load('pictur/01.png') , [125 , 125])
+    img1 = img1.convert()
+    rect1 = img1.get_rect()
+    rect1.topleft = (100 , 350)
+
+    img2 = pygame.transform.scale(pygame.image.load("pictur/02.png") ,[125 , 125])
+    img2 = img2.convert()
+    rect2 = img2.get_rect()
+    rect2.bottomright = (380 , 473)
+
+    img3 = pygame.transform.scale(pygame.image.load("pictur/03.png") , [125 , 125])
+    img3 = img3.convert()
+    rect3 = img3.get_rect()
+    rect3.center = (470, 410)
+
+except pygame.error as e:
+    print(f"Failed to load image: {e}")
+    sys.exit(1)
+
 def draw_button(screen, rect, text):
     pygame.draw.rect(screen, BLUE, rect)
     text_surface = font.render(text, True, WHITE)
@@ -27,11 +47,16 @@ def draw_button(screen, rect, text):
     
 def main():
     button_rect = pygame.Rect(220, 200, 200, 50)
-    running = True            
+    running = True  
+
 # ۴ - keep looping through
     while running:
     # ۵ - clear the screen before drawing it again
         screen.fill(WHITE)
+        screen.blit(img1 , rect1)
+        screen.blit(img2 , rect2)
+        screen.blit(img3 , rect3)
+
     # ۶ - draw the screen elements
     #screen.blit(player, (100,100))
         draw_button(screen, button_rect, "Play")
@@ -45,7 +70,7 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:  
                 if button_rect.collidepoint(event.pos):
                     print("The button was pressed")
-    pygame.display.flip()
+    
   
             # if it is quit the game
     pygame.quit() 
