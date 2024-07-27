@@ -55,9 +55,12 @@ while running:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             running = False
+            pygame.quit()
+            sys.exit(0)
         elif event.type == pygame.MOUSEBUTTONDOWN:  
             if button_rect.collidepoint(event.pos):
                 print("The button was pressed")
+    pygame.display.flip()
 
 
 #قوانین بازی
