@@ -97,4 +97,3 @@ while running:
                 play_game("scissor")
     pygame.display.flip()
 
-
