@@ -2,6 +2,7 @@
 import pygame
 from pygame.locals import *
 import sys
+import random
 
 # ۲ - Initialize the game
 pygame.init()
@@ -41,7 +42,31 @@ def draw_button(screen, rect, text):
     text_rect = text_surface.get_rect(center=rect.center)
     screen.blit(text_surface, text_rect)
     
-button_rect = pygame.Rect(220, 200, 200, 50)
+def play_game(player1):
+    game_list = ["rock", "paper", "scissor"]
+    player2 = random.choice(game_list)
+    print(f"computer choice: {player2}")
+
+    if player1 == player2:
+       print ("equal")
+    elif player1 == "rock":
+        if player2 == "scissor":
+          print ("player1 wins")
+        else :
+          print ("computer wins")
+    elif player1 == "paper":
+        if player2 == "rock":
+          print("player1 wins")
+        else:
+          print("computer wins")
+    elif player1 == "scissor":
+        if player2 == "paper":
+         print("player1 wins")
+        else:
+         print("computer wins")
+    else:
+         print("invalid input!")
+        
 running = True  
 
 while running:
@@ -49,7 +74,11 @@ while running:
     screen.blit(img1 , rect1)
     screen.blit(img2 , rect2)
     screen.blit(img3 , rect3)
+    pygame.draw.rect(screen, BLUE, rect1, 1)
+    pygame.draw.rect(screen, BLUE, rect2, 2)
+    pygame.draw.rect(screen, BLUE, rect3, 3)
 
+    button_rect = pygame.Rect(220, 200, 200, 50)
     draw_button(screen, button_rect, "Play")
 
     for event in pygame.event.get():
@@ -60,35 +89,12 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:  
             if button_rect.collidepoint(event.pos):
                 print("The button was pressed")
+            if rect1.collidepoint(event.pos):
+                play_game("rock")
+            elif rect2.collidepoint(event.pos):
+                play_game("paper")
+            elif rect3.collidepoint(event.pos):
+                play_game("scissor")
     pygame.display.flip()
 
 
-#قوانین بازی
-import random
-
-game_list = ["rock", "paper", "scissor"]
-
-player1 = input("Enter your decision: ")
-player2 = random.choice(game_list)
-
-print(f"camputer choice: {player2}")
-
-if player1 == player2:
-    print ("equal")
-elif player1 == "rock":
-    if player2 == "scissor":
-        print ("player1 wins")
-    else :
-        print ("computer wins")
-elif player1 == "paper":
-    if player2 == "rock":
-        print("player1 wins")
-    else:
-        print("computer wins")
-elif player1 == "scissor":
-    if player2 == "paper":
-        print("player1 wins")
-    else:
-        print("computer wins")
-else:
-    print("invalid input!")
